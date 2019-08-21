@@ -1,11 +1,15 @@
 package com.jithinjude.whatsappclone;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -14,16 +18,26 @@ import java.util.List;
  */
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
     private List<ChatModel> chatList;
+
+
     
     public class ChatViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewName;
         private TextView textViewMessage;
         private TextView textViewTime;
+        private ImageView imageViewProfilePic;
         private ChatViewHolder(View view) {
             super(view);
             textViewName = view.findViewById(R.id.tv_name);
             textViewMessage = view.findViewById(R.id.tv_message);
             textViewTime = view.findViewById(R.id.tv_time);
+            imageViewProfilePic = view.findViewById(R.id.profile_image);
+
+            try {
+                URL newurl = new URL("https://www.dpsainiflorist.com/wp-content/uploads/2015/10/passion-love_1.jpg");
+                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+                imageViewProfilePic.setImageBitmap(mIcon_val);
+            }catch (Exception e){}
         }
     }
     
