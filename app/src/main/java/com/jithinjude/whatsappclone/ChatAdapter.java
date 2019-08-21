@@ -22,9 +22,6 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
     private Context context;
     private List<ChatModel> chatList;
-    private String imgUrl = "https://www.dpsainiflorist.com/wp-content/uploads/2015/10/passion-love_1.jpg";
-
-
     
     public class ChatViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewName;
@@ -63,7 +60,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         holder.textViewTime.setText(chatList.get(position).time);
 
         Glide.with(context)
-                .load(imgUrl)
+                .load(chatList.get(position).imgUrl)
                 .into(holder.imageViewProfilePic);
 
     }

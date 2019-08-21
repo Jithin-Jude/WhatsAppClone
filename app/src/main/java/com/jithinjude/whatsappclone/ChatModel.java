@@ -8,11 +8,13 @@ public class ChatModel {
     String name;
     String message;
     String time;
+    String imgUrl;
 
-    public ChatModel(String name, String message, String time) {
+    public ChatModel(String name, String message, String time, String imgUrl) {
         this.name = name;
         this.message = message;
         this.time = time;
+        this.imgUrl = imgUrl;
     }
 
     public String getName() {
@@ -37,5 +39,13 @@ public class ChatModel {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
