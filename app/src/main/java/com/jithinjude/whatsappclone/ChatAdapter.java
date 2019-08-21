@@ -62,11 +62,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         holder.textViewMessage.setText(chatList.get(position).message);
         holder.textViewTime.setText(chatList.get(position).time);
 
-        try {
-            URL newurl = new URL("https://www.dpsainiflorist.com/wp-content/uploads/2015/10/passion-love_1.jpg");
-            Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-            holder.imageViewProfilePic.setImageBitmap(mIcon_val);
-        }catch (Exception e){}
+        Glide.with(context)
+                .load(imgUrl)
+                .into(holder.imageViewProfilePic);
 
     }
 
