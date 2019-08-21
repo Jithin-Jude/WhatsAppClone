@@ -29,11 +29,29 @@ public class MainActivity extends AppCompatActivity {
         chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM"));
         chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM"));
 
+        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM"));
+        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM"));
+        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM"));
+        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM"));
+        chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM"));
+        chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM"));
+        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM"));
+        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM"));
+        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM"));
+        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM"));
+        chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM"));
+        chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM"));        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM"));
+        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM"));
+        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM"));
+        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM"));
+        chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM"));
+        chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM"));
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_chat);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        chatAdapter = new ChatAdapter(chats);
+        chatAdapter = new ChatAdapter(this, chats);
         recyclerView.setAdapter(chatAdapter);
     }
 }

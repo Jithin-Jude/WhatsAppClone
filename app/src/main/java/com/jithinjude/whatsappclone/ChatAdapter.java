@@ -1,5 +1,6 @@
 package com.jithinjude.whatsappclone;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.net.URL;
 import java.util.List;
 
@@ -17,7 +20,9 @@ import java.util.List;
  * jithin.jude68@gmail.com
  */
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
+    private Context context;
     private List<ChatModel> chatList;
+    private String imgUrl = "https://www.dpsainiflorist.com/wp-content/uploads/2015/10/passion-love_1.jpg";
 
 
     
@@ -32,17 +37,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             textViewMessage = view.findViewById(R.id.tv_message);
             textViewTime = view.findViewById(R.id.tv_time);
             imageViewProfilePic = view.findViewById(R.id.profile_image);
-
-            try {
-                URL newurl = new URL("https://www.dpsainiflorist.com/wp-content/uploads/2015/10/passion-love_1.jpg");
-                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-                imageViewProfilePic.setImageBitmap(mIcon_val);
-            }catch (Exception e){}
         }
     }
     
-    public ChatAdapter(List<ChatModel> chatList) {
+    public ChatAdapter(Context context, List<ChatModel> chatList) {
         this.chatList = chatList;
+        this.context = context;
     }
     
     @Override
@@ -61,6 +61,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         holder.textViewName.setText(chatList.get(position).name);
         holder.textViewMessage.setText(chatList.get(position).message);
         holder.textViewTime.setText(chatList.get(position).time);
+
+        try {
+            URL newurl = new URL("https://www.dpsainiflorist.com/wp-content/uploads/2015/10/passion-love_1.jpg");
+            Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+            holder.imageViewProfilePic.setImageBitmap(mIcon_val);
+        }catch (Exception e){}
 
     }
 
