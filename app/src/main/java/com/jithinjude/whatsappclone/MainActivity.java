@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private TextView textViewEmptyMsg;
     private ChatAdapter chatAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
@@ -32,62 +34,37 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         //TODO: Hardrcoded data should replace with data from JSON
-        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM",imgUrl1));
-        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM",imgUrl2));
-        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM",imgUrl3));
-        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM",imgUrl4));
-        chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM",imgUrl5));
-        chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM",imgUrl6));
-
-        //TODO: Hardrcoded data should replace with data from JSON
-        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM",imgUrl1));
-        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM",imgUrl2));
-        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM",imgUrl3));
-        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM",imgUrl4));
-        chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM",imgUrl5));
-        chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM",imgUrl6));
-
-        //TODO: Hardrcoded data should replace with data from JSON
-        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM",imgUrl1));
-        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM",imgUrl2));
-        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM",imgUrl3));
-        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM",imgUrl4));
-        chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM",imgUrl5));
-        chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM",imgUrl6));
-
-        //TODO: Hardrcoded data should replace with data from JSON
-        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM",imgUrl1));
-        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM",imgUrl2));
-        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM",imgUrl3));
-        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM",imgUrl4));
-        chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM",imgUrl5));
-        chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM",imgUrl6));
-
-        //TODO: Hardrcoded data should replace with data from JSON
-        chats.add(new ChatModel("Bill Gates","Welcome to microsoft","10:00 AM",imgUrl1));
-        chats.add(new ChatModel("Jeff Bezos","Welcome to amazon","09:00 AM",imgUrl2));
-        chats.add(new ChatModel("Larry Page","Welcome to alphabet","11:00 AM",imgUrl3));
-        chats.add(new ChatModel("Mark Zuckerberg","Welcome to facebook","12:30 PM",imgUrl4));
+        chats.add(new ChatModel("Bill Gates","Welcome to Microsoft","10:00 AM",imgUrl1));
+        chats.add(new ChatModel("Jeff Bezos","Welcome to Amazon","09:00 AM",imgUrl2));
+        chats.add(new ChatModel("Larry Page","Welcome to Alphabet","11:00 AM",imgUrl3));
+        chats.add(new ChatModel("Mark Zuckerberg","Welcome to Facebook","12:30 PM",imgUrl4));
         chats.add(new ChatModel("Elon Musk","Welcome to SpaceX","11:00 AM",imgUrl5));
         chats.add(new ChatModel("Steve Jobs","Welcome to Apple","10:30 AM",imgUrl6));
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_chat);
+        textViewEmptyMsg = findViewById(R.id.tv_empty_msg);
+
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         chatAdapter = new ChatAdapter(this, chats);
         recyclerView.setAdapter(chatAdapter);
 
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        final TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getText().equals("CHAT")) {
                     recyclerView.setVisibility(View.VISIBLE);
+                    textViewEmptyMsg.setVisibility(View.INVISIBLE);
                 }else if(tab.getText().equals("STATUS")){
                     recyclerView.setVisibility(View.INVISIBLE);
+                    textViewEmptyMsg.setText("Status empty");
+                    textViewEmptyMsg.setVisibility(View.VISIBLE);
                 }else{
                     recyclerView.setVisibility(View.INVISIBLE);
+                    textViewEmptyMsg.setText("Call logs empty");
+                    textViewEmptyMsg.setVisibility(View.VISIBLE);
                 }
             }
 
