@@ -11,6 +11,6 @@ import retrofit2.http.GET;
  */
 public interface GetDataService {
 
-    @GET("vvkub")
+    @GET("jkc1v")
     Call<List<ChatModel>> getAllChats();
 }

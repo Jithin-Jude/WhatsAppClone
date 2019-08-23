@@ -28,7 +28,7 @@
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
                 android:text="WhatsApp Clone"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -37,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tab_layout"
                 android:background="@color/colorPrimary"
-                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabIndicatorColor="@color/white"
+                app:tabSelectedTextColor="@color/white"
                 app:tabTextColor="@color/tab_text_unselected">
 
                 <android.support.design.widget.TabItem
@@ -72,6 +73,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/light_green"
+        app:backgroundTint="@color/light_green"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
