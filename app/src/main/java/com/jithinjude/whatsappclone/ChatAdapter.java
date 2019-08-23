@@ -1,8 +1,6 @@
 package com.jithinjude.whatsappclone;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -22,7 +18,7 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
     private Context context;
     private List<ChatModel> chatList;
-    
+
     public class ChatViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewName;
         private TextView textViewMessage;
@@ -36,8 +32,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             imageViewProfilePic = view.findViewById(R.id.profile_image);
         }
     }
-    
-    public ChatAdapter(Context context, List<ChatModel> chatList) {
+
+    private ChatAdapter(Context context, List<ChatModel> chatList) {
         this.chatList = chatList;
         this.context = context;
     }
