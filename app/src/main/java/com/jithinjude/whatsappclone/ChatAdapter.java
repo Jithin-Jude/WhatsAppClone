@@ -33,7 +33,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         }
     }
 
-    private ChatAdapter(Context context, List<ChatModel> chatList) {
+    public ChatAdapter(Context context, List<ChatModel> chatList) {
         this.chatList = chatList;
         this.context = context;
     }
