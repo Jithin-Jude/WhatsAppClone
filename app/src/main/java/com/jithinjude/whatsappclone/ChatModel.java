@@ -9,11 +9,4 @@ public class ChatModel {
     String message;
     String time;
     String imgUrl;
-
-    public ChatModel(String name, String message, String time, String imgUrl) {
-        this.name = name;
-        this.message = message;
-        this.time = time;
-        this.imgUrl = imgUrl;
-    }
 }

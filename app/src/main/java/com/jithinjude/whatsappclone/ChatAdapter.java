@@ -1,6 +1,7 @@
 package com.jithinjude.whatsappclone;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,34 +20,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     private Context context;
     private List<ChatModel> chatList;
 
-    public class ChatViewHolder extends RecyclerView.ViewHolder {
-        private TextView textViewName;
-        private TextView textViewMessage;
-        private TextView textViewTime;
-        private ImageView imageViewProfilePic;
-        private ChatViewHolder(View view) {
-            super(view);
-            textViewName = view.findViewById(R.id.tv_name);
-            textViewMessage = view.findViewById(R.id.tv_message);
-            textViewTime = view.findViewById(R.id.tv_time);
-            imageViewProfilePic = view.findViewById(R.id.profile_image);
-        }
-    }
-
     public ChatAdapter(Context context, List<ChatModel> chatList) {
         this.chatList = chatList;
         this.context = context;
     }
-    
+
     @Override
     public ChatAdapter.ChatViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.chat_item, parent, false);
 
-        ChatViewHolder chatViewHolder = new ChatViewHolder(itemView);
 
-        return chatViewHolder;
+        return new ChatViewHolder(itemView);
     }
 
     @Override
@@ -65,5 +51,22 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     @Override
     public int getItemCount() {
         return chatList.size();
+    }
+
+    public class ChatViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView textViewName;
+        private TextView textViewMessage;
+        private TextView textViewTime;
+        private ImageView imageViewProfilePic;
+
+
+        public ChatViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textViewName = itemView.findViewById(R.id.tv_name);
+            textViewMessage = itemView.findViewById(R.id.tv_message);
+            textViewTime = itemView.findViewById(R.id.tv_time);
+            imageViewProfilePic = itemView.findViewById(R.id.profile_image);
+        }
     }
 }

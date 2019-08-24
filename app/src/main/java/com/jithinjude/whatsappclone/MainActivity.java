@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewEmptyMsg;
     private ChatAdapter chatAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    ProgressDialog progressDoalog;
+    ProgressDialog progressDialogue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        progressDoalog = new ProgressDialog(MainActivity.this);
-        progressDoalog.setMessage("Loading chats...");
-        progressDoalog.show();
+        progressDialogue = new ProgressDialog(MainActivity.this);
+        progressDialogue.setMessage("Loading chats...");
+        progressDialogue.show();
 
         getChatData();
 
@@ -79,21 +79,20 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<ChatModel>>() {
             @Override
             public void onResponse(Call<List<ChatModel>> call, Response<List<ChatModel>> response) {
-                progressDoalog.dismiss();
-                Log.d("RESPONSE",response.body().toString());
-                generateDataList(response.body());
+                loadData(response.body());
             }
 
             @Override
             public void onFailure(Call<List<ChatModel>> call, Throwable t) {
-                progressDoalog.dismiss();
+                progressDialogue.dismiss();
                 Toast.makeText(MainActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void generateDataList(List<ChatModel> chats) {
+    private void loadData(List<ChatModel> chats) {
         chatAdapter = new ChatAdapter(this, chats);
         recyclerView.setAdapter(chatAdapter);
+        progressDialogue.dismiss();
     }
 }
